@@ -3,17 +3,21 @@ import React, { useState } from 'react';
 import Cinema from './Cinema';
 
 const Home = () => {
-	const [showCinema, setShowCinema] = useState(true);
+    const [showCinema, setShowCinema] = useState(true);
 
-	return (
-		<div>
-			{showCinema ? (
-				<Cinema setShowCinema={setShowCinema} />
-			) : (
-				<div>Hello.</div>
-			)}
-		</div>
-	);
+    if (showCinema) {
+		return <Cinema setShowCinema={setShowCinema} />;
+	} else {
+		return (
+			<button onClick={() => setShowCinema(true)}>
+				
+				
+				Click to show Cinema
+			
+			
+			</button>
+		);
+	}
 };
 
 export default Home;

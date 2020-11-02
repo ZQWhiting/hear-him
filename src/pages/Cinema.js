@@ -3,19 +3,20 @@ import React, { useState } from 'react';
 import Slide from '../components/Slide';
 
 const Cinema = ({ setShowCinema }) => {
-	const [slideNumber, setSlideNumber] = useState(1);
+	const [slideNumber, setSlideNumber] = useState(0);
+
+	const slideIncrement = async () => {
+		if (slideNumber < 2) {
+			setSlideNumber(slideNumber + 1);
+		} else {
+			setShowCinema(false);
+		}
+	};
 
 	return (
-		<div>
-			{slideNumber <= 3 ? (
-				<Slide
-					slideNumber={slideNumber}
-					setSlideNumber={setSlideNumber}
-				/>
-			) : (
-				setShowCinema(false)
-			)}
-		</div>
+		<button onClick={slideIncrement}>
+			<Slide slideNumber={slideNumber} />
+		</button>
 	);
 };
 
